@@ -1,0 +1,41 @@
+buildscript {
+  repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.ratpack-framework:ratpack-gradle:0.7.0-SNAPSHOT'
+  }
+}
+
+// The “ratpack” plugin applies the “application” plugin, making it easy to create a standalone application.
+// See: http://gradle.org/docs/current/userguide/application_plugin.html
+apply plugin: "ratpack"
+
+repositories {
+  maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+  mavenCentral()
+  maven { url "http://repo.springsource.org/repo" } // for springloaded
+}
+
+dependencies {
+    // SpringLoaded enables runtime hot reloading.
+    // It is not part of the app runtime and is not shipped in the distribution.
+    springloaded "org.springsource.springloaded:springloaded-core:1.1.1"
+
+    // This is a Guice ratpack app
+    compile 'org.ratpack-framework:ratpack-guice:0.7.0-SNAPSHOT'
+}
+
+mainClassName = "example.Main"
+
+// The “ratpack” plugin is IDEA aware.
+// It will create a run configuration in IDEA to launch your app in your IDE, with hot reloading.
+apply plugin: "idea"
+idea {
+    project {
+        jdkName "1.7"
+        languageLevel "1.7"
+    }
+}
+
