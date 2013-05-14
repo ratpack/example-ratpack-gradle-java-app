@@ -7,10 +7,10 @@ import javax.inject.Inject;
 
 public class MyHandler implements Handler {
 
-    private final MyServiceImpl myService;
+    private final MyService myService;
 
     @Inject
-    public MyHandler(MyServiceImpl myService) {
+    public MyHandler(MyService myService) {
         this.myService = myService;
     }
 
