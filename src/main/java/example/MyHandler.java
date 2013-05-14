@@ -5,6 +5,12 @@ import org.ratpackframework.routing.Handler;
 
 import javax.inject.Inject;
 
+/**
+ * A handler implementation that is created via dependency injection.
+ *
+ * @see MyModule
+ * @see RoutingBootstrap
+ */
 public class MyHandler implements Handler {
 
     private final MyService myService;
