@@ -2,12 +2,12 @@ package example;
 
 import org.ratpackframework.bootstrap.RatpackServer;
 import org.ratpackframework.bootstrap.RatpackServerBuilder;
-import org.ratpackframework.routing.Handler;
+import org.ratpackframework.handling.Handler;
 
 import java.io.File;
 
 import static org.ratpackframework.guice.Injection.handler;
-import static org.ratpackframework.routing.Handlers.routes;
+import static org.ratpackframework.handling.Handlers.chain;
 
 public class Main {
 
@@ -16,7 +16,7 @@ public class Main {
         ModuleBootstrap modulesConfigurer = new ModuleBootstrap();
 
         // The start of our application routing logic
-        Handler appHandler = routes(new RoutingBootstrap());
+        Handler appHandler = chain(new HandlerBootstrap());
 
         // A Handler that makes objects bound to Guice by modules available downstream
         Handler guiceHandler = handler(modulesConfigurer, appHandler);

@@ -4,7 +4,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath 'org.ratpack-framework:ratpack-gradle:0.7.0-SNAPSHOT'
+    classpath 'org.ratpack-framework:ratpack-gradle:0.9.0-SNAPSHOT'
   }
 }
 
@@ -24,7 +24,7 @@ dependencies {
     springloaded "org.springsource.springloaded:springloaded-core:1.1.1"
 
     // This is a Guice ratpack app
-    compile 'org.ratpack-framework:ratpack-guice:0.7.0-SNAPSHOT'
+    compile 'org.ratpack-framework:ratpack-guice:0.9.0-SNAPSHOT'
 }
 
 mainClassName = "example.Main"

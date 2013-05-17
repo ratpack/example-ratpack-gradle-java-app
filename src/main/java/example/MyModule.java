@@ -3,7 +3,7 @@ package example;
 import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
 import org.ratpackframework.guice.HandlerDecoratingModule;
-import org.ratpackframework.routing.Handler;
+import org.ratpackframework.handling.Handler;
 
 /**
  * An example Guice module.
@@ -21,7 +21,7 @@ public class MyModule extends AbstractModule implements HandlerDecoratingModule 
 
     /**
      * Modules that implement {@link HandlerDecoratingModule} are able to decorate the application handler in some way.
-     *
+     * <p/>
      * In this case, we are wrapping that app handler in a logging handler so that all requests are logged
      *
      * @see HandlerDecoratingModule

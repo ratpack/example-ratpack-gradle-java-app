@@ -1,7 +1,7 @@
 package example;
 
-import org.ratpackframework.routing.Exchange;
-import org.ratpackframework.routing.Handler;
+import org.ratpackframework.handling.Exchange;
+import org.ratpackframework.handling.Handler;
 
 import javax.inject.Inject;
 
@@ -9,7 +9,7 @@ import javax.inject.Inject;
  * A handler implementation that is created via dependency injection.
  *
  * @see MyModule
- * @see RoutingBootstrap
+ * @see HandlerBootstrap
  */
 public class MyHandler implements Handler {
 

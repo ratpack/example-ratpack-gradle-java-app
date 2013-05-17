@@ -1,7 +1,7 @@
 package example;
 
-import org.ratpackframework.routing.Exchange;
-import org.ratpackframework.routing.Handler;
+import org.ratpackframework.handling.Exchange;
+import org.ratpackframework.handling.Handler;
 
 /**
  * An example of a handler implicitly set up by a module
