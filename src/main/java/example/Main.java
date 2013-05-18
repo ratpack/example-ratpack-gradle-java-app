@@ -11,7 +11,7 @@ import static org.ratpackframework.handling.Handlers.chain;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // Defines the Guice modules for our application
         ModuleBootstrap modulesConfigurer = new ModuleBootstrap();
 
