@@ -1,6 +1,6 @@
 package example;
 
-import org.ratpackframework.handling.ChainBuilder;
+import org.ratpackframework.handling.Chain;
 import org.ratpackframework.handling.Exchange;
 import org.ratpackframework.handling.Handler;
 import org.ratpackframework.util.Action;
@@ -8,16 +8,17 @@ import org.ratpackframework.util.Action;
 import java.util.Map;
 
 import static org.ratpackframework.guice.Injection.handler;
-import static org.ratpackframework.handling.Handlers.*;
+import static org.ratpackframework.handling.Handlers.assetsPath;
+import static org.ratpackframework.handling.Handlers.path;
 
 /**
  * The main application handler.
  * <p/>
- * Defines a hierarchical tree of routes.
+ * Defines a hierarchical tree of handlers.
  *
  * @see Main
  */
-public class HandlerBootstrap implements Action<ChainBuilder> {
+public class HandlerBootstrap implements Action<Chain> {
 
     /**
      * Adds potential routes.
@@ -27,7 +28,7 @@ public class HandlerBootstrap implements Action<ChainBuilder> {
      * This method will be called for every request. This makes it possible to dynamically define the routes
      * if necessary.
      */
-    public void execute(ChainBuilder handlers) {
+    public void execute(Chain handlers) {
 
         // Map to /foo
         handlers.add(path("foo", new Handler() {
@@ -44,11 +45,11 @@ public class HandlerBootstrap implements Action<ChainBuilder> {
         }));
 
         // Set up a nested routing block, where
-        handlers.add(path("nested", new Action<ChainBuilder>() {
-            public void execute(ChainBuilder routing) {
+        handlers.add(path("nested", new Action<Chain>() {
+            public void execute(Chain chain) {
 
                 // Map to /nested/*/*
-                routing.add(exactPath(":var1/:var2", new Handler() {
+                chain.add(path(":var1/:var2", new Handler() {
                     public void handle(Exchange exchange) {
                         // The path tokens are the :var1 and :var2 path components above
                         Map<String, String> pathTokens = exchange.getPathTokens();

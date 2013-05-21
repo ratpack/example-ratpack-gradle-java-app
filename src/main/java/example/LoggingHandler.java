@@ -19,6 +19,6 @@ public class LoggingHandler implements Handler {
     @Override
     public void handle(Exchange exchange) {
         System.out.println("Received: " + exchange.getRequest().getUri());
-        exchange.next(delegate);
+        exchange.insert(delegate);
     }
 }
