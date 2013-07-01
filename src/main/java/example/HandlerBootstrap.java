@@ -7,9 +7,8 @@ import org.ratpackframework.util.Action;
 
 import java.util.Map;
 
-import static org.ratpackframework.guice.Injection.handler;
-import static org.ratpackframework.handling.Handlers.assetsPath;
-import static org.ratpackframework.handling.Handlers.path;
+import static org.ratpackframework.guice.Guice.handler;
+import static org.ratpackframework.handling.Handlers.*;
 
 /**
  * The main application handler.
@@ -45,7 +44,7 @@ public class HandlerBootstrap implements Action<Chain> {
         }));
 
         // Set up a nested routing block, where
-        handlers.add(path("nested", new Action<Chain>() {
+        handlers.add(prefix("nested", new Action<Chain>() {
             public void execute(Chain chain) {
 
                 // Map to /nested/*/*
@@ -64,9 +63,13 @@ public class HandlerBootstrap implements Action<Chain> {
 
         // Bind the /static app path to the src/ratpack/assets dir
         // Try /static/logo.png
-        handlers.add(assetsPath("static", "assets", new Handler() {
-            public void handle(Exchange exchange) {
-                exchange.getResponse().status(404).send();
+        handlers.add(prefix("static", new Action<Chain>() {
+            public void execute(Chain handlers) {
+                handlers.add(assets("assets", new Handler() {
+                    public void handle(Exchange exchange) {
+                        exchange.getResponse().status(404).send();
+                    }
+                }));
             }
         }));
 

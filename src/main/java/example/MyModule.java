@@ -4,6 +4,13 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
 import org.ratpackframework.guice.HandlerDecoratingModule;
 import org.ratpackframework.handling.Handler;
+import org.ratpackframework.handling.Handlers;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static java.util.Arrays.asList;
+import static org.ratpackframework.handling.Handlers.chain;
 
 /**
  * An example Guice module.
@@ -27,6 +34,6 @@ public class MyModule extends AbstractModule implements HandlerDecoratingModule 
      * @see HandlerDecoratingModule
      */
     public Handler decorate(Injector injector, Handler handler) {
-        return new LoggingHandler(handler);
+        return chain(asList(new LoggingHandler(), handler));
     }
 }

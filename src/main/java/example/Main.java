@@ -6,7 +6,7 @@ import org.ratpackframework.handling.Handler;
 
 import java.io.File;
 
-import static org.ratpackframework.guice.Injection.handler;
+import static org.ratpackframework.guice.Guice.handler;
 import static org.ratpackframework.handling.Handlers.chain;
 
 public class Main {
@@ -29,6 +29,6 @@ public class Main {
 
         // Start the server and block
         RatpackServer ratpackServer = ratpackServerBuilder.build();
-        ratpackServer.startAndWait();
+        ratpackServer.start();
     }
 }
