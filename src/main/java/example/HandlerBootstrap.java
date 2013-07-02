@@ -52,7 +52,7 @@ public class HandlerBootstrap implements Action<Chain> {
                     public void handle(Exchange exchange) {
                         // The path tokens are the :var1 and :var2 path components above
                         Map<String, String> pathTokens = exchange.getPathTokens();
-                        exchange.getResponse().send("from the nested handler, var1: " + pathTokens.get("var1") + ", " + pathTokens.get("var2"));
+                        exchange.getResponse().send("from the nested handler, var1: " + pathTokens.get("var1") + ", var2: " + pathTokens.get("var2"));
                     }
                 }));
             }
