@@ -48,7 +48,7 @@ public class HandlerBootstrap implements Action<Chain> {
             public void execute(Chain chain) {
 
                 // Map to /nested/*/*
-                chain.add(path(":var1/:var2", new Handler() {
+                chain.add(path(":var1/:var2?", new Handler() {
                     public void handle(Exchange exchange) {
                         // The path tokens are the :var1 and :var2 path components above
                         Map<String, String> pathTokens = exchange.getPathTokens();
