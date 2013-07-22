@@ -1,11 +1,11 @@
 buildscript {
-  repositories {
-    maven { url "http://oss.jfrog.org/artifactory/repo" }
-    mavenCentral()
-  }
-  dependencies {
-    classpath 'org.ratpack-framework:ratpack-gradle:0.9.0-SNAPSHOT'
-  }
+    repositories {
+        maven { url "http://oss.jfrog.org/artifactory/repo" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.ratpack-framework:ratpack-gradle:0.9.0-SNAPSHOT'
+    }
 }
 
 // The “ratpack” plugin applies the “application” plugin, making it easy to create a standalone application.
@@ -16,7 +16,7 @@ repositories {
     mavenLocal()
     maven { url "http://oss.jfrog.org/artifactory/repo" }
     mavenCentral()
-  maven { url "http://repo.springsource.org/repo" } // for springloaded
+    maven { url "http://repo.springsource.org/repo" } // for springloaded
 }
 
 dependencies {
