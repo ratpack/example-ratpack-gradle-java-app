@@ -1,6 +1,6 @@
 package example;
 
-import org.ratpackframework.handling.Exchange;
+import org.ratpackframework.handling.Context;
 import org.ratpackframework.handling.Handler;
 
 /**
@@ -11,8 +11,8 @@ import org.ratpackframework.handling.Handler;
 public class LoggingHandler implements Handler {
 
     @Override
-    public void handle(Exchange exchange) {
-        System.out.println("Received: " + exchange.getRequest().getUri());
-        exchange.next();
+    public void handle(Context context) {
+        System.out.println("Received: " + context.getRequest().getUri());
+        context.next();
     }
 }

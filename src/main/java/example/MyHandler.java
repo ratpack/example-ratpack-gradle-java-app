@@ -1,6 +1,6 @@
 package example;
 
-import org.ratpackframework.handling.Exchange;
+import org.ratpackframework.handling.Context;
 import org.ratpackframework.handling.Handler;
 
 import javax.inject.Inject;
@@ -21,7 +21,7 @@ public class MyHandler implements Handler {
     }
 
     @Override
-    public void handle(Exchange exchange) {
-        exchange.getResponse().send("service value: " + myService.getValue());
+    public void handle(Context context) {
+        context.getResponse().send("service value: " + myService.getValue());
     }
 }

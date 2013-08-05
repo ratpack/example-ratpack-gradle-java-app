@@ -1,7 +1,7 @@
 package example;
 
 import org.ratpackframework.handling.Chain;
-import org.ratpackframework.handling.Exchange;
+import org.ratpackframework.handling.Context;
 import org.ratpackframework.handling.Handler;
 import org.ratpackframework.util.Action;
 
@@ -15,7 +15,7 @@ import static org.ratpackframework.handling.Handlers.*;
  * <p/>
  * Defines a hierarchical tree of handlers.
  *
- * @see Main
+ * @see HandlerFactory
  */
 public class HandlerBootstrap implements Action<Chain> {
 
@@ -31,15 +31,15 @@ public class HandlerBootstrap implements Action<Chain> {
 
         // Map to /foo
         handlers.add(path("foo", new Handler() {
-            public void handle(Exchange exchange) {
-                exchange.getResponse().send("from the foo handler");
+            public void handle(Context context) {
+                context.getResponse().send("from the foo handler");
             }
         }));
 
         // Map to /bar
         handlers.add(path("bar", new Handler() {
-            public void handle(Exchange exchange) {
-                exchange.getResponse().send("from the bar handler");
+            public void handle(Context context) {
+                context.getResponse().send("from the bar handler");
             }
         }));
 
@@ -49,10 +49,10 @@ public class HandlerBootstrap implements Action<Chain> {
 
                 // Map to /nested/*/*
                 chain.add(path(":var1/:var2?", new Handler() {
-                    public void handle(Exchange exchange) {
+                    public void handle(Context context) {
                         // The path tokens are the :var1 and :var2 path components above
-                        Map<String, String> pathTokens = exchange.getPathTokens();
-                        exchange.getResponse().send("from the nested handler, var1: " + pathTokens.get("var1") + ", var2: " + pathTokens.get("var2"));
+                        Map<String, String> pathTokens = context.getPathTokens();
+                        context.getResponse().send("from the nested handler, var1: " + pathTokens.get("var1") + ", var2: " + pathTokens.get("var2"));
                     }
                 }));
             }
@@ -66,8 +66,8 @@ public class HandlerBootstrap implements Action<Chain> {
         handlers.add(prefix("static", new Action<Chain>() {
             public void execute(Chain handlers) {
                 handlers.add(assets("assets", new Handler() {
-                    public void handle(Exchange exchange) {
-                        exchange.getResponse().status(404).send();
+                    public void handle(Context context) {
+                        context.getResponse().status(404).send();
                     }
                 }));
             }
@@ -75,8 +75,8 @@ public class HandlerBootstrap implements Action<Chain> {
 
         // If nothing above matched, we'll get to here.
         handlers.add(new Handler() {
-            public void handle(Exchange exchange) {
-                exchange.getResponse().send("root handler!");
+            public void handle(Context context) {
+                context.getResponse().send("root handler!");
             }
         });
     }

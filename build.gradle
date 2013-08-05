@@ -28,8 +28,6 @@ dependencies {
     compile 'org.ratpack-framework:ratpack-guice:0.9.0-SNAPSHOT'
 }
 
-mainClassName = "example.Main"
-
 // The “ratpack” plugin is IDEA aware.
 // It will create a run configuration in IDEA to launch your app in your IDE, with hot reloading.
 apply plugin: "idea"
