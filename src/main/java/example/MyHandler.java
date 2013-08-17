@@ -4,6 +4,7 @@ import org.ratpackframework.handling.Context;
 import org.ratpackframework.handling.Handler;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * A handler implementation that is created via dependency injection.
@@ -11,6 +12,7 @@ import javax.inject.Inject;
  * @see MyModule
  * @see HandlerBootstrap
  */
+@Singleton
 public class MyHandler implements Handler {
 
     private final MyService myService;

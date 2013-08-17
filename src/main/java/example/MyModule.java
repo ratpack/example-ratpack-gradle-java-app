@@ -4,10 +4,6 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
 import org.ratpackframework.guice.HandlerDecoratingModule;
 import org.ratpackframework.handling.Handler;
-import org.ratpackframework.handling.Handlers;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static java.util.Arrays.asList;
 import static org.ratpackframework.handling.Handlers.chain;

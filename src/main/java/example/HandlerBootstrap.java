@@ -7,7 +7,6 @@ import org.ratpackframework.util.Action;
 
 import java.util.Map;
 
-import static org.ratpackframework.guice.Guice.handler;
 import static org.ratpackframework.handling.Handlers.*;
 
 /**
@@ -59,7 +58,7 @@ public class HandlerBootstrap implements Action<Chain> {
         }));
 
         // Map a dependency injected handler to
-        handlers.add(path("injected", handler(MyHandler.class)));
+        handlers.add(path("injected", handlers.getRegistry().get(MyHandler.class)));
 
         // Bind the /static app path to the src/ratpack/assets dir
         // Try /static/logo.png
