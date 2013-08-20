@@ -7,8 +7,6 @@ import org.ratpackframework.util.Action;
 
 import java.util.Map;
 
-import static org.ratpackframework.handling.Handlers.*;
-
 /**
  * The main application handler.
  * <p/>
@@ -27,57 +25,57 @@ public class HandlerBootstrap implements Action<Chain> {
      * if necessary.
      */
     public void execute(Chain handlers) {
+        handlers
 
-        // Map to /foo
-        handlers.add(path("foo", new Handler() {
-            public void handle(Context context) {
-                context.getResponse().send("from the foo handler");
-            }
-        }));
-
-        // Map to /bar
-        handlers.add(path("bar", new Handler() {
-            public void handle(Context context) {
-                context.getResponse().send("from the bar handler");
-            }
-        }));
-
-        // Set up a nested routing block, where
-        handlers.add(prefix("nested", new Action<Chain>() {
-            public void execute(Chain chain) {
-
-                // Map to /nested/*/*
-                chain.add(path(":var1/:var2?", new Handler() {
+                // Map to /foo
+                .path("foo", new Handler() {
                     public void handle(Context context) {
-                        // The path tokens are the :var1 and :var2 path components above
-                        Map<String, String> pathTokens = context.getPathTokens();
-                        context.getResponse().send("from the nested handler, var1: " + pathTokens.get("var1") + ", var2: " + pathTokens.get("var2"));
+                        context.getResponse().send("from the foo handler");
                     }
-                }));
-            }
-        }));
+                })
 
-        // Map a dependency injected handler to
-        handlers.add(path("injected", handlers.getRegistry().get(MyHandler.class)));
-
-        // Bind the /static app path to the src/ratpack/assets dir
-        // Try /static/logo.png
-        handlers.add(prefix("static", new Action<Chain>() {
-            public void execute(Chain handlers) {
-                handlers.add(assets("assets", new Handler() {
+                        // Map to /bar
+                .path("bar", new Handler() {
                     public void handle(Context context) {
-                        context.getResponse().status(404).send();
+                        context.getResponse().send("from the bar handler");
                     }
-                }));
-            }
-        }));
+                })
 
-        // If nothing above matched, we'll get to here.
-        handlers.add(new Handler() {
-            public void handle(Context context) {
-                context.getResponse().send("root handler!");
-            }
-        });
+                        // Set up a nested routing block, where
+                .prefix("nested", new Action<Chain>() {
+                    public void execute(Chain nested) {
+                        // Map to /nested/*/*
+                        nested.path(":var1/:var2?", new Handler() {
+                            public void handle(Context context) {
+                                // The path tokens are the :var1 and :var2 path components above
+                                Map<String, String> pathTokens = context.getPathTokens();
+                                context.getResponse().send("from the nested handler, var1: " + pathTokens.get("var1") + ", var2: " + pathTokens.get("var2"));
+                            }
+                        });
+                    }
+                })
+
+                        // Map a dependency injected handler to
+                .path("injected", handlers.getRegistry().get(MyHandler.class))
+
+                        // Bind the /static app path to the src/ratpack/assets dir
+                        // Try /static/logo.png
+                .prefix("static", new Action<Chain>() {
+                    public void execute(Chain handlers) {
+                        handlers.assets("assets", new Handler() {
+                            public void handle(Context context) {
+                                context.getResponse().status(404).send();
+                            }
+                        });
+                    }
+                })
+
+                        // If nothing above matched, we'll get to here.
+                .handler(new Handler() {
+                    public void handle(Context context) {
+                        context.getResponse().send("root handler!");
+                    }
+                });
     }
 
 }
