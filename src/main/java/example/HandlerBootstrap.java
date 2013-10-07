@@ -28,14 +28,14 @@ public class HandlerBootstrap implements Action<Chain> {
         handlers
 
                 // Map to /foo
-                .path("foo", new Handler() {
+                .handler("foo", new Handler() {
                     public void handle(Context context) {
                         context.getResponse().send("from the foo handler");
                     }
                 })
 
                         // Map to /bar
-                .path("bar", new Handler() {
+                .handler("bar", new Handler() {
                     public void handle(Context context) {
                         context.getResponse().send("from the bar handler");
                     }
@@ -45,7 +45,7 @@ public class HandlerBootstrap implements Action<Chain> {
                 .prefix("nested", new Action<Chain>() {
                     public void execute(Chain nested) {
                         // Map to /nested/*/*
-                        nested.path(":var1/:var2?", new Handler() {
+                        nested.handler(":var1/:var2?", new Handler() {
                             public void handle(Context context) {
                                 // The path tokens are the :var1 and :var2 path components above
                                 Map<String, String> pathTokens = context.getPathTokens();
@@ -56,17 +56,13 @@ public class HandlerBootstrap implements Action<Chain> {
                 })
 
                         // Map a dependency injected handler to
-                .path("injected", handlers.getRegistry().get(MyHandler.class))
+                .handler("injected", handlers.getRegistry().get(MyHandler.class))
 
-                        // Bind the /static app path to the src/ratpack/assets dir
+                        // Bind the /static app path to the src/ratpack/assets/images dir
                         // Try /static/logo.png
                 .prefix("static", new Action<Chain>() {
                     public void execute(Chain handlers) {
-                        handlers.assets("assets", new Handler() {
-                            public void handle(Context context) {
-                                context.getResponse().status(404).send();
-                            }
-                        });
+                        handlers.assets("assets/images");
                     }
                 })
 
