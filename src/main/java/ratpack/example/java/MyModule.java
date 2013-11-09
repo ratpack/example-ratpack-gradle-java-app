@@ -1,12 +1,12 @@
-package example;
+package ratpack.example.java;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
-import org.ratpackframework.guice.HandlerDecoratingModule;
-import org.ratpackframework.handling.Handler;
+import ratpack.guice.HandlerDecoratingModule;
+import ratpack.handling.Handler;
 
 import static java.util.Arrays.asList;
-import static org.ratpackframework.handling.Handlers.chain;
+import static ratpack.handling.Handlers.chain;
 
 /**
  * An example Guice module.

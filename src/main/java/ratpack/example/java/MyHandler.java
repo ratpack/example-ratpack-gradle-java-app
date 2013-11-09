@@ -1,7 +1,7 @@
-package example;
+package ratpack.example.java;
 
-import org.ratpackframework.handling.Context;
-import org.ratpackframework.handling.Handler;
+import ratpack.handling.Context;
+import ratpack.handling.Handler;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

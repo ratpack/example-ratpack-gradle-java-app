@@ -1,9 +1,9 @@
-package example;
+package ratpack.example.java;
 
-import org.ratpackframework.handling.Chain;
-import org.ratpackframework.handling.Context;
-import org.ratpackframework.handling.Handler;
-import org.ratpackframework.util.Action;
+import ratpack.handling.Chain;
+import ratpack.handling.Context;
+import ratpack.handling.Handler;
+import ratpack.util.Action;
 
 import java.util.Map;
 

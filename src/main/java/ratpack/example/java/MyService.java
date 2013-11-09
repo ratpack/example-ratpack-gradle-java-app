@@ -1,4 +1,4 @@
-package example;
+package ratpack.example.java;
 
 /**
  * An example service interface.

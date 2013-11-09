@@ -1,11 +1,11 @@
-package example;
+package ratpack.example.java;
 
-import org.ratpackframework.handling.Handler;
-import org.ratpackframework.launch.LaunchConfig;
+import ratpack.handling.Handler;
+import ratpack.launch.LaunchConfig;
 
-import static org.ratpackframework.guice.Guice.handler;
+import static ratpack.guice.Guice.handler;
 
-public class HandlerFactory implements org.ratpackframework.launch.HandlerFactory {
+public class HandlerFactory implements ratpack.launch.HandlerFactory {
 
     @Override
     public Handler create(LaunchConfig launchConfig) {
