@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.ratpack-framework:ratpack-gradle:0.9.0-SNAPSHOT'
+        classpath 'io.ratpack:ratpack-gradle:0.9.0-SNAPSHOT'
     }
 }
 
@@ -22,10 +22,10 @@ repositories {
 dependencies {
     // SpringLoaded enables runtime hot reloading.
     // It is not part of the app runtime and is not shipped in the distribution.
-    springloaded "org.springsource.springloaded:springloaded-core:1.1.1"
+    springloaded "org.springsource.springloaded:springloaded-core:1.1.4"
 
     // This is a Guice ratpack app
-    compile 'org.ratpack-framework:ratpack-guice:0.9.0-SNAPSHOT'
+    compile 'io.ratpack:ratpack-guice:0.9.0-SNAPSHOT'
 }
 
 // The “ratpack” plugin is IDEA aware.
