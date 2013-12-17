@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         maven { url "http://oss.jfrog.org/artifactory/repo" }
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'io.ratpack:ratpack-gradle:0.9.0-SNAPSHOT'
@@ -13,9 +13,8 @@ buildscript {
 apply plugin: "ratpack"
 
 repositories {
-    mavenLocal()
     maven { url "http://oss.jfrog.org/artifactory/repo" }
-    mavenCentral()
+    jcenter()
     maven { url "http://repo.springsource.org/repo" } // for springloaded
 }
 
