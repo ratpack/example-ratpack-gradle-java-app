@@ -24,20 +24,20 @@ public class HandlerBootstrap implements Action<Chain> {
      * This method will be called for every request. This makes it possible to dynamically define the routes
      * if necessary.
      */
-    public void execute(Chain handlers) {
+    public void execute(Chain handlers) throws Exception {
         handlers
 
                 // Map to /foo
                 .handler("foo", new Handler() {
                     public void handle(Context context) {
-                        context.getResponse().send("from the foo handler");
+                        context.render("from the foo handler");
                     }
                 })
 
                         // Map to /bar
                 .handler("bar", new Handler() {
                     public void handle(Context context) {
-                        context.getResponse().send("from the bar handler");
+                        context.render("from the bar handler");
                     }
                 })
 
@@ -49,7 +49,7 @@ public class HandlerBootstrap implements Action<Chain> {
                             public void handle(Context context) {
                                 // The path tokens are the :var1 and :var2 path components above
                                 Map<String, String> pathTokens = context.getPathTokens();
-                                context.getResponse().send("from the nested handler, var1: " + pathTokens.get("var1") + ", var2: " + pathTokens.get("var2"));
+                                context.render("from the nested handler, var1: " + pathTokens.get("var1") + ", var2: " + pathTokens.get("var2"));
                             }
                         });
                     }
@@ -69,7 +69,7 @@ public class HandlerBootstrap implements Action<Chain> {
                         // If nothing above matched, we'll get to here.
                 .handler(new Handler() {
                     public void handle(Context context) {
-                        context.getResponse().send("root handler!");
+                        context.render("root handler!");
                     }
                 });
     }

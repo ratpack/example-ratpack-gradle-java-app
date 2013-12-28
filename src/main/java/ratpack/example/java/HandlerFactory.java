@@ -8,7 +8,7 @@ import static ratpack.guice.Guice.handler;
 public class HandlerFactory implements ratpack.launch.HandlerFactory {
 
     @Override
-    public Handler create(LaunchConfig launchConfig) {
+    public Handler create(LaunchConfig launchConfig) throws Exception {
         // Defines the Guice modules for our application
         ModuleBootstrap modulesConfigurer = new ModuleBootstrap();
 
