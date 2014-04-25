@@ -1,7 +1,7 @@
 package ratpack.example.java;
 
 import ratpack.guice.ModuleRegistry;
-import ratpack.util.Action;
+import ratpack.func.Action;
 
 /**
  * An action that registers all of the modules that make up the application.
