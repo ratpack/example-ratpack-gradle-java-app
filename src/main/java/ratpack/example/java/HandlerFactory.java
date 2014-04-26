@@ -38,6 +38,7 @@ public class HandlerFactory implements ratpack.launch.HandlerFactory {
          * to dynamically define the routes if necessary.
          */
         protected void execute() throws Exception {
+            // Map to /foo
             handler("foo", context -> context.render("from the foo handler"));
 
             // Map to /bar
