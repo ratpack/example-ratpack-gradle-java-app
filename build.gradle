@@ -8,6 +8,10 @@ buildscript {
     }
 }
 
+if (!JavaVersion.current().java8Compatible) {
+  throw new IllegalStateException("Must be built with Java 8 or higher")
+}
+
 // The “ratpack” plugin applies the “application” plugin, making it easy to create a standalone application.
 // See: http://gradle.org/docs/current/userguide/application_plugin.html
 apply plugin: "ratpack"
