@@ -3,7 +3,7 @@ package ratpack.example.java;
 import ratpack.handling.Chain;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
-import ratpack.util.Action;
+import ratpack.func.Action;
 
 import java.util.Map;
 
