@@ -48,7 +48,4 @@ running. After making a change you must make the project to have the changes tak
 
 ## More on Ratpack
 
-There are no published docs for Ratpack at this time.
-
-To learn more, check out the source @ https://github.com/ratpack/ratpack/tree/master or open this project in IDEA and
-dig through the source there.
+To learn more about Ratpack, visit http://www.ratpack.io
