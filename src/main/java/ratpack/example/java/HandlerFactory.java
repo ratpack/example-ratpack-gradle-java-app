@@ -1,7 +1,7 @@
 package ratpack.example.java;
 
 import java.util.Map;
-import ratpack.guice.ModuleRegistry;
+import ratpack.guice.BindingsSpec;
 import ratpack.handling.Chain;
 import ratpack.handling.ChainAction;
 import ratpack.handling.Handler;
@@ -23,8 +23,8 @@ public class HandlerFactory implements ratpack.launch.HandlerFactory {
      * This is only invoked once during application bootstrap. If you change the
      * module configuration of an application, you must restart it.
      */
-    private void registerModules(ModuleRegistry moduleRegistry) {
-        moduleRegistry.register(new MyModule());
+    private void registerModules(BindingsSpec moduleRegistry) {
+        moduleRegistry.add(new MyModule());
     }
 
     private class Routes extends ChainAction {
