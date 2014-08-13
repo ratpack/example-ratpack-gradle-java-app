@@ -4,7 +4,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'io.ratpack:ratpack-gradle:0.9.7'
+        classpath 'io.ratpack:ratpack-gradle:0.9.7',
+                  'com.github.jengelman.gradle.plugins:shadow:1.0.3'
     }
 }
 
@@ -15,6 +16,7 @@ if (!JavaVersion.current().java8Compatible) {
 // The “ratpack” plugin applies the “application” plugin, making it easy to create a standalone application.
 // See: http://gradle.org/docs/current/userguide/application_plugin.html
 apply plugin: "io.ratpack.ratpack-java"
+apply plugin: "com.github.johnrengelman.shadow"
 
 repositories {
     maven { url "http://oss.jfrog.org/artifactory/repo" }
