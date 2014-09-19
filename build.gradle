@@ -4,8 +4,11 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'io.ratpack:ratpack-gradle:0.9.8',
+        classpath 'io.ratpack:ratpack-gradle:+',
                   'com.github.jengelman.gradle.plugins:shadow:1.0.3'
+    }
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
     }
 }
 
