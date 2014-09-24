@@ -54,3 +54,6 @@ idea {
         }
     }
 }
+
+//some CI config
+apply from: file("gradle/ci.gradle")
