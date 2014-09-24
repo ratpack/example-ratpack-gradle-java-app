@@ -10,7 +10,6 @@ import javax.inject.Singleton;
  * A handler implementation that is created via dependency injection.
  *
  * @see MyModule
- * @see HandlerBootstrap
  */
 @Singleton
 public class MyHandler implements Handler {
