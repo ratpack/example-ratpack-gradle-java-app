@@ -16,7 +16,7 @@ if (System.getenv("SNAP_CI")) {
             def hookUrl = "https://ratpack.slack.com/services/hooks/incoming-webhook?token=${slackToken}"
 
             def linkBranchPart = pullRequestNumber ? "pull/$pullRequestNumber" : "branch/${branch}"
-            def snapLink = "https://snap-ci.com/ratpack/ratpack/${linkBranchPart}/logs/defaultPipeline/${pipelineNumber}/${stage}"
+            def snapLink = "https://snap-ci.com/ratpack/$repository/${linkBranchPart}/logs/defaultPipeline/${pipelineNumber}/${stage}"
 
             def pullRequestLink = "https://github.com/ratpack/$repository/pull/$pullRequestNumber"
             def commitLink = "https://github.com/ratpack/$repository/commit/$commitHash"
