@@ -45,6 +45,7 @@ idea {
     project {
         //use JDK 1.8 in idea
         jdkName "1.8"
+        languageLevel "1.8"
         ipr {
             withXml { provider ->
                 def node = provider.asNode()
