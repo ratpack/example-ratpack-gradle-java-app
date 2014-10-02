@@ -1,20 +1,24 @@
 package ratpack.example.java;
 
-import static org.junit.Assert.*;
-
 import com.google.common.io.CharStreams;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+import ratpack.test.ApplicationUnderTest;
+import ratpack.test.RatpackMainApplicationUnderTest;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URI;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-import org.junit.Test;
-import ratpack.test.ApplicationUnderTest;
-import ratpack.test.RatpackMainApplicationUnderTest;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 @RunWith(JUnit4.class)
 public class SiteTest {
+
+    String lineSeparator = System.getProperty("line.separator");
 
     ApplicationUnderTest aut = new RatpackMainApplicationUnderTest();
 
@@ -41,7 +45,7 @@ public class SiteTest {
 
     @Test
     public void staticHandler() {
-        assertEquals("text asset\n", get("/static/test.txt"));
+        assertEquals("text asset" + lineSeparator, get("/static/test.txt"));
     }
 
     @Test
