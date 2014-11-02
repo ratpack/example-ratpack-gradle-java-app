@@ -1,12 +1,6 @@
-buildscript {
-    repositories {
-        maven { url "http://oss.jfrog.org/artifactory/repo" }
-        jcenter()
-    }
-    dependencies {
-        classpath 'io.ratpack:ratpack-gradle:0.9.10',
-                  'com.github.jengelman.gradle.plugins:shadow:1.0.3'
-    }
+plugins {
+	id "io.ratpack.ratpack-groovy" version "0.9.10"
+	id "com.github.johnrengelman.shadow" version "1.0.3"
 }
 
 if (!JavaVersion.current().java8Compatible) {
