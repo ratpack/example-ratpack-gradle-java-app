@@ -3,16 +3,17 @@ package ratpack.example.java;
 import ratpack.guice.Guice;
 import ratpack.handling.Handler;
 import ratpack.launch.LaunchConfig;
+import ratpack.registry.Registry;
 
 import java.util.Map;
 
 public class HandlerFactory implements ratpack.launch.HandlerFactory {
 
     @Override
-    public Handler create(LaunchConfig launchConfig) throws Exception {
+    public Handler create(Registry registry) throws Exception {
         // A Handler that makes objects bound to Guice by modules available downstream
 
-        return Guice.builder(launchConfig)
+        return Guice.builder(registry)
                 .bindings(bindingsSpec -> bindingsSpec.add(new MyModule()))
                 .build(chain -> chain
                         .handler("foo", context -> context.render("from the foo handler")) // Map to /foo
