@@ -1,11 +1,14 @@
 package ratpack.example.java;
 
+import ratpack.registry.Registries;
+
 import com.google.common.io.CharStreams;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import ratpack.test.ApplicationUnderTest;
-import ratpack.test.RatpackMainApplicationUnderTest;
+import ratpack.test.MainClassApplicationUnderTest;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -20,7 +23,12 @@ public class SiteTest {
 
     String lineSeparator = System.getProperty("line.separator");
 
-    ApplicationUnderTest aut = new RatpackMainApplicationUnderTest();
+    MainClassApplicationUnderTest aut = new MainClassApplicationUnderTest(MyApp.class, Registries.empty());
+
+    @After
+    public void tearDown() {
+      aut.close();
+    }
 
     @Test
     public void fooHandler() {
