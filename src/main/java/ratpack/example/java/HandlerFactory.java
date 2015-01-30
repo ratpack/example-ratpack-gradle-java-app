@@ -2,7 +2,6 @@ package ratpack.example.java;
 
 import ratpack.guice.Guice;
 import ratpack.handling.Handler;
-import ratpack.launch.LaunchConfig;
 import ratpack.registry.Registry;
 
 import java.util.Map;
