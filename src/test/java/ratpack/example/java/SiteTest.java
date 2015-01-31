@@ -1,7 +1,5 @@
 package ratpack.example.java;
 
-import ratpack.registry.Registries;
-
 import com.google.common.io.CharStreams;
 import org.junit.After;
 import org.junit.Test;
@@ -23,7 +21,7 @@ public class SiteTest {
 
     String lineSeparator = System.getProperty("line.separator");
 
-    MainClassApplicationUnderTest aut = new MainClassApplicationUnderTest(MyApp.class, Registries.empty());
+    MainClassApplicationUnderTest aut = new MainClassApplicationUnderTest(MyApp.class);
 
     @After
     public void tearDown() {
