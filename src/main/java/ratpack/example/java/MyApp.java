@@ -1,9 +1,9 @@
 package ratpack.example.java;
 
-import ratpack.server.RatpackServer;
-import ratpack.server.ServerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ratpack.server.RatpackServer;
+import ratpack.server.ServerConfig;
 
 public class MyApp {
 
@@ -12,7 +12,7 @@ public class MyApp {
   public static void main(String[] args) {
     try {
       RatpackServer.of(b -> {
-        b.config(ServerConfig.findBaseDirProps());
+        b.serverConfig(ServerConfig.findBaseDirProps());
         return b.handler(new HandlerFactory()::create);
       }).start();
     } catch (Exception e) {
