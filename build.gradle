@@ -59,3 +59,5 @@ idea {
 
 //some CI config
 apply from: file("gradle/ci.gradle")
+
+mainClassName = "ratpack.example.java.MyApp"
