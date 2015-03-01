@@ -1,35 +1,23 @@
 package ratpack.example.java;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Injector;
-import ratpack.guice.HandlerDecoratingModule;
-import ratpack.handling.Handler;
-
-import static java.util.Arrays.asList;
-import static ratpack.handling.Handlers.chain;
+import com.google.inject.multibindings.Multibinder;
+import ratpack.handling.HandlerDecorator;
 
 /**
  * An example Guice module.
  */
-public class MyModule extends AbstractModule implements HandlerDecoratingModule {
+public class MyModule extends AbstractModule {
 
-    /**
-     * Adds a service impl to the application.
-     *
-     * @see MyHandler
-     */
-    protected void configure() {
-        bind(MyService.class).to(MyServiceImpl.class);
-    }
-
-    /**
-     * Modules that implement {@link HandlerDecoratingModule} are able to decorate the application handler in some way.
-     * <p/>
-     * In this case, we are wrapping that app handler in a logging handler so that all requests are logged
-     *
-     * @see HandlerDecoratingModule
-     */
-    public Handler decorate(Injector injector, Handler handler) {
-        return chain(asList(new LoggingHandler(), handler));
-    }
+  /**
+   * Adds a service impl to the application, and registers a decorator so that all requests are logged.
+   * Registered implementations of {@link ratpack.handling.HandlerDecorator} are able to decorate the application handler.
+   *
+   * @see MyHandler
+   */
+  protected void configure() {
+    bind(MyService.class).to(MyServiceImpl.class);
+    bind(MyHandler.class);
+    Multibinder.newSetBinder(binder(), HandlerDecorator.class).addBinding().toInstance(HandlerDecorator.prepend(new LoggingHandler()));
+  }
 }

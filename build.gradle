@@ -31,6 +31,7 @@ dependencies {
 
     // This is a Guice ratpack app
     compile ratpack.dependency("guice")
+    runtime 'org.slf4j:slf4j-simple:1.7.10'
 }
 
 // The “ratpack” plugin is IDEA aware.
