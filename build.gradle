@@ -22,7 +22,6 @@ apply plugin: "io.ratpack.ratpack-java"
 apply plugin: "com.github.johnrengelman.shadow"
 
 repositories {
-    maven { url 'http://clinker.netty.io/nexus/content/repositories/snapshots' }
     maven { url "http://oss.jfrog.org/artifactory/repo" }
     jcenter()
 }
