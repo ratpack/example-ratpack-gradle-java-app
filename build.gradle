@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'io.ratpack:ratpack-gradle:0.9.14',
+        classpath 'io.ratpack:ratpack-gradle:0.9.15',
                   'com.github.jengelman.gradle.plugins:shadow:1.2.1'
     }
 }
