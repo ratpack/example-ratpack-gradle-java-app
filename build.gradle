@@ -1,10 +1,14 @@
 buildscript {
     repositories {
+        maven { url "http://oss.jfrog.org/artifactory/repo" }
         jcenter()
     }
     dependencies {
         classpath 'io.ratpack:ratpack-gradle:0.9.15',
                   'com.github.jengelman.gradle.plugins:shadow:1.2.1'
+    }
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
     }
 }
 
@@ -19,6 +23,7 @@ apply plugin: "com.github.johnrengelman.shadow"
 
 repositories {
     maven { url 'http://clinker.netty.io/nexus/content/repositories/snapshots' }
+    maven { url "http://oss.jfrog.org/artifactory/repo" }
     jcenter()
 }
 
