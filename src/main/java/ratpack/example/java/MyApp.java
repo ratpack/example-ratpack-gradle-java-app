@@ -14,16 +14,16 @@ public class MyApp {
 
   public static void main(String[] args) {
     try {
-      RatpackServer.of(b -> b
-          .serverConfig(ServerConfig.findBaseDirProps())
-          .registry(Guice.registry(bindingSpec -> bindingSpec.add(new MyModule())))
+      RatpackServer.start(s -> s
+          .serverConfig(ServerConfig.findBaseDir())
+          .registry(Guice.registry(b -> b.add(new MyModule())))
           .handlers(chain -> chain
-              .handler("foo", context -> context.render("from the foo handler")) // Map to /foo
-              .handler("bar", context -> context.render("from the bar handler")) // Map to /bar
+              .handler("foo", ctx -> ctx.render("from the foo handler")) // Map to /foo
+              .handler("bar", ctx -> ctx.render("from the bar handler")) // Map to /bar
               .prefix("nested", nested -> { // Set up a nested routing block, which is delegated to `nestedHandler`
-                nested.handler(":var1/:var2?", context -> { // The path tokens are the :var1 and :var2 path components above
-                  Map<String, String> pathTokens = context.getPathTokens();
-                  context.render(
+                nested.handler(":var1/:var2?", ctx -> { // The path tokens are the :var1 and :var2 path components above
+                  Map<String, String> pathTokens = ctx.getPathTokens();
+                  ctx.render(
                       "from the nested handler, var1: " + pathTokens.get("var1") +
                           ", var2: " + pathTokens.get("var2")
                   );
@@ -31,7 +31,9 @@ public class MyApp {
               })
               .handler("injected", chain.getRegistry().get(MyHandler.class)) // Map to a dependency injected handler
               .prefix("static", nested -> nested.assets("assets/images")) // Bind the /static app path to the src/ratpack/assets/images dir
-              .handler(context -> context.render("root handler!")))).start();
+              .handler(ctx -> ctx.render("root handler!"))
+          )
+      );
     } catch (Exception e) {
       LOGGER.error("", e);
       System.exit(1);
