@@ -16,7 +16,7 @@ public class MyApp {
     try {
       RatpackServer.start(s -> s
           .serverConfig(ServerConfig.findBaseDir())
-          .registry(Guice.registry(b -> b.add(new MyModule())))
+          .registry(Guice.registry(b -> b.module(MyModule.class)))
           .handlers(chain -> chain
               .handler("foo", ctx -> ctx.render("from the foo handler")) // Map to /foo
               .handler("bar", ctx -> ctx.render("from the bar handler")) // Map to /bar
