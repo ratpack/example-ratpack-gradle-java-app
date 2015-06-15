@@ -16,7 +16,7 @@ public class MyApp {
     try {
       RatpackServer.start(s -> s
           .serverConfig(ServerConfig.findBaseDir())
-          .registry(Guice.registry(b -> b.add(new MyModule())))
+          .registry(Guice.registry(b -> b.module(MyModule.class)))
           .handlers(chain -> chain
               .handler("foo", ctx -> ctx.render("from the foo handler")) // Map to /foo
               .handler("bar", ctx -> ctx.render("from the bar handler")) // Map to /bar
@@ -29,7 +29,7 @@ public class MyApp {
                   );
                 });
               })
-              .handler("injected", chain.getRegistry().get(MyHandler.class)) // Map to a dependency injected handler
+              .handler("injected", MyHandler.class) // Map to a dependency injected handler
               .prefix("static", nested -> nested.assets("assets/images")) // Bind the /static app path to the src/ratpack/assets/images dir
               .handler(ctx -> ctx.render("root handler!"))
           )
