@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'io.ratpack:ratpack-gradle:0.9.17',
+        classpath 'io.ratpack:ratpack-gradle:0.9.18',
                   'com.github.jengelman.gradle.plugins:shadow:1.2.1'
     }
 }
@@ -26,7 +26,7 @@ dependencies {
 
     // SpringLoaded enables runtime hot reloading.
     // It is not part of the app runtime and is not shipped in the distribution.
-    // springloaded "org.springframework:springloaded:1.2.1.RELEASE"
+    // springloaded "org.springframework:springloaded:1.2.3.RELEASE"
 
     // This is a Guice ratpack app
     compile ratpack.dependency("guice")

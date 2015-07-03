@@ -44,7 +44,7 @@ public class SiteTest {
 
   @Test
   public void staticHandler() {
-    assertEquals("text asset" + lineSeparator, get("static/test.txt"));
+    assertEquals("text asset\n", get("static/test.txt"));
   }
 
   @Test
