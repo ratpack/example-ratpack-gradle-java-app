@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import ratpack.test.MainClassApplicationUnderTest;
-import ratpack.test.http.TestHttpClient;
 
 import static org.junit.Assert.assertEquals;
 
@@ -54,7 +53,7 @@ public class SiteTest {
   }
 
   private String get(String path) {
-    return TestHttpClient.testHttpClient(aut).getText(path);
+    return aut.getHttpClient().getText(path);
   }
 
 }
