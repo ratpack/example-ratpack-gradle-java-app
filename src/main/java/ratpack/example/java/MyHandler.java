@@ -14,15 +14,15 @@ import javax.inject.Singleton;
 @Singleton
 public class MyHandler implements Handler {
 
-    private final MyService myService;
+  private final MyService myService;
 
-    @Inject
-    public MyHandler(MyService myService) {
-        this.myService = myService;
-    }
+  @Inject
+  public MyHandler(MyService myService) {
+    this.myService = myService;
+  }
 
-    @Override
-    public void handle(Context context) {
-        context.getResponse().send("service value: " + myService.getValue());
-    }
+  @Override
+  public void handle(Context context) {
+    context.render("service value: " + myService.getValue());
+  }
 }
