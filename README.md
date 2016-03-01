@@ -18,7 +18,7 @@ distribution for your app.
 
 Run:
 
-    ./gradlew installApp
+    ./gradlew installDist
     cd build/install/example-ratpack-gradle-java-app
     bin/example-ratpack-gradle-java-app
 
