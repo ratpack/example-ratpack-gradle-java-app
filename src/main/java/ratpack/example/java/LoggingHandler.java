@@ -1,7 +1,7 @@
 package ratpack.example.java;
 
-import ratpack.handling.Context;
-import ratpack.handling.Handler;
+import ratpack.core.handling.Context;
+import ratpack.core.handling.Handler;
 
 /**
  * An example of a handler implicitly set up by a module

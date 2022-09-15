@@ -1,10 +1,9 @@
 package ratpack.example.java;
 
+import ratpack.core.handling.Chain;
+import ratpack.core.server.BaseDir;
+import ratpack.core.server.RatpackServer;
 import ratpack.guice.Guice;
-import ratpack.handling.Chain;
-import ratpack.server.BaseDir;
-import ratpack.server.RatpackServer;
-
 import java.util.Map;
 
 public class MyApp {
