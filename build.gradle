@@ -1,10 +1,11 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
+        gradlePluginPortal()
     }
     dependencies {
-        classpath 'io.ratpack:ratpack-gradle:1.0.0',
-                  'com.github.jengelman.gradle.plugins:shadow:1.2.1'
+        classpath 'io.ratpack:ratpack-gradle:2.0.0-rc-1',
+                  'gradle.plugin.com.github.johnrengelman:shadow:7.1.2'
     }
 }
 
@@ -18,15 +19,15 @@ apply plugin: "io.ratpack.ratpack-java"
 apply plugin: "com.github.johnrengelman.shadow"
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    testCompile 'junit:junit:4.11'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
 
     // This is a Guice ratpack app
-    compile ratpack.dependency("guice")
-    runtime 'org.slf4j:slf4j-simple:1.7.10'
+    implementation  ratpack.dependency("guice")
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.36'
 }
 
 // The “ratpack” plugin is IDEA aware.
@@ -50,5 +51,9 @@ idea {
 
 //some CI config
 apply from: file("gradle/ci.gradle")
+
+test {
+    useJUnitPlatform()
+}
 
 mainClassName = "ratpack.example.java.MyApp"

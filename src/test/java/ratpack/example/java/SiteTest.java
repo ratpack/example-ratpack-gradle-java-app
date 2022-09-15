@@ -1,21 +1,18 @@
 package ratpack.example.java;
 
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import ratpack.test.MainClassApplicationUnderTest;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(JUnit4.class)
 public class SiteTest {
 
   String lineSeparator = System.getProperty("line.separator");
 
   MainClassApplicationUnderTest aut = new MainClassApplicationUnderTest(MyApp.class);
 
-  @After
+  @AfterEach
   public void tearDown() {
     aut.close();
   }
